@@ -29,10 +29,9 @@ def load_model():
     model_dir = snapshot_download("JeffDing/TCM_DEMO", revision="master")
     
     model = (
-        #AutoModelForCausalLM.from_pretrained(llm_model_path, trust_remote_code=True).to(torch.bfloat16).cuda()
-        AutoModelForCausalLM.from_pretrained(llm_model_path, trust_remote_code=True).to(torch.bfloat16)
+        AutoModelForCausalLM.from_pretrained(model_dir, trust_remote_code=True).to(torch.bfloat16)
     )
-    tokenizer = AutoTokenizer.from_pretrained(llm_model_path, trust_remote_code=True)
+    tokenizer = AutoTokenizer.from_pretrained(model_dir, trust_remote_code=True)
     return model, tokenizer
 
 
