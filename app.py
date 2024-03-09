@@ -16,13 +16,9 @@ from transformers.utils import logging
 
 from tools.transformers.interface import GenerationConfig, generate_interactive
 
+from modelscope import snapshot_download, AutoModel, AutoTokenizer
+
 logger = logging.get_logger(__name__)
-
-# 使用openxlab下载模型到本地
-from openxlab.model import download
-llm_model_path = "/home/xlab-app-center/.cache/model/tcm"
-download(model_repo="JeffDing/TCM", output=llm_model_path)
-
 
 def on_btn_click():
     del st.session_state.messages
@@ -30,6 +26,8 @@ def on_btn_click():
 
 @st.cache_resource
 def load_model():
+    model_dir = snapshot_download("JeffDing/TCM_DEMO", revision="master")
+    
     model = (
         #AutoModelForCausalLM.from_pretrained(llm_model_path, trust_remote_code=True).to(torch.bfloat16).cuda()
         AutoModelForCausalLM.from_pretrained(llm_model_path, trust_remote_code=True).to(torch.bfloat16)
