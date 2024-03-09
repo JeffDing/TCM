@@ -20,7 +20,7 @@ logger = logging.get_logger(__name__)
 
 # 使用openxlab下载模型到本地
 from openxlab.model import download
-llm_model_path = "tcm"
+llm_model_path = "/home/xlab-app-center/.cache/model/tcm"
 download(model_repo="JeffDing/TCM", output=llm_model_path)
 
 
