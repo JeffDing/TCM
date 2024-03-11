@@ -36,7 +36,7 @@ def generate_interactive(
     inputs = tokenizer([prompt], padding=True, return_tensors="pt")
     input_length = len(inputs["input_ids"][0])
     for k, v in inputs.items():
-        inputs[k] = v.cuda()
+        inputs[k] = v
     input_ids = inputs["input_ids"]
     batch_size, input_ids_seq_length = input_ids.shape[0], input_ids.shape[-1]
     if generation_config is None:
