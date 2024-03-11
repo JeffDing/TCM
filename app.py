@@ -26,7 +26,7 @@ def on_btn_click():
 
 @st.cache_resource
 def load_model():
-    model_dir = snapshot_download("JeffDing/TCM_DEMO", revision="master")
+    model_dir = snapshot_download("JeffDing/TCM_1_8B", revision="master")
     
     model = (
         AutoModelForCausalLM.from_pretrained(model_dir, trust_remote_code=True).to(torch.bfloat16)
