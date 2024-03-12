@@ -12,6 +12,8 @@ from dataclasses import asdict
 import json
 import streamlit as st
 import torch
+from modelscope import snapshot_download
+
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from transformers.utils import logging
 
