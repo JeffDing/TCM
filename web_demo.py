@@ -50,7 +50,7 @@ def prepare_generation_config():
 
 
 system_meta_instruction = (
-    """<|System|>:您是一位非常专业的的中医药学教授。您始终根据提问者的问题提供准确、全面和详细的答案。"""
+    """<|System|>:你是一位中医药学的医生，现在需要你用你的专业知识给病人开具中药处方"""
 )
 user_prompt = "<|User|>:{user}\n"
 robot_prompt = "<|Bot|>:{robot}<eoa>\n"
@@ -82,7 +82,7 @@ def main():
     user_avator = "doc/imgs/user.png"
     robot_avator = "doc/imgs/robot.png"
 
-    st.title("中药知识问答平台")
+    st.title("基于InternLM-1.8B的中医药知识问答")
 
     generation_config = prepare_generation_config()
 
