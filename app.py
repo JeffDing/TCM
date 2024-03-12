@@ -83,9 +83,7 @@ block = gr.Blocks()
 with block as demo:
     with gr.Row(equal_height=True):   
         with gr.Column(scale=15):
-            gr.Markdown("""<h1><center>InternLM</center></h1>
-                <center>党务知识问答</center>
-                """)
+            gr.Markdown("""<h1><center>中医药问答平台</center></h1>""")
         # gr.Image(value=LOGO_PATH, scale=1, min_width=10,show_label=False, show_download_button=False)
 
     with gr.Row():
