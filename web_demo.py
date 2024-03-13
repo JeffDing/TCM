@@ -12,9 +12,11 @@ from dataclasses import asdict
 import json
 import streamlit as st
 import torch
-from modelscope import snapshot_download
+import os
 
-from transformers import AutoModelForCausalLM, AutoTokenizer
+#from modelscope import snapshot_download
+
+from transformers import AutoModelForCausalLM, AutoTokenizer, AutoModel
 from transformers.utils import logging
 
 from tools.transformers.interface import GenerationConfig, generate_interactive
@@ -28,6 +30,7 @@ def on_btn_click():
 
 @st.cache_resource
 def load_model(model_dir):
+
     model = (
         #AutoModelForCausalLM.from_pretrained(model_dir, trust_remote_code=True).to(torch.bfloat16).cuda()
         AutoModelForCausalLM.from_pretrained(model_dir, trust_remote_code=True).to(torch.bfloat16)
@@ -75,7 +78,13 @@ def combine_history(prompt):
 def main():
     # torch.cuda.empty_cache()
     print("load model begin.")
-    model_dir = snapshot_download('JeffDing/TCM_1_8b', cache_dir='./tcm_1_8', revision='master')
+    #model_dir = snapshot_download('JeffDing/TCM_1_8b', cache_dir='./tcm_1_8', revision='master')
+    model_dir = './TCM_1_8B'
+    os.system('apt install git')
+    os.system('apt install git-lfs')
+    os.system(f'git clone https://code.openxlab.org.cn/JeffDing/TCM_1_8B.git {model_dir}')
+    os.system(f'cd {model_dir} && git lfs pull')
+    
     model, tokenizer = load_model(model_dir)
     print("load model end.")
 
